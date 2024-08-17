@@ -1,715 +1,866 @@
-//Sat Aug 17 2024 01:18:54 GMT+0000 (Coordinated Universal Time)
+//Sat Aug 17 2024 01:21:46 GMT+0000 (Coordinated Universal Time)
 //Base:https://github.com/echo094/decode-js
 //Modify:https://github.com/smallfawn/decode_action
-const W = aa("七猫免费小说 书币"),
-  X = require("got"),
-  Y = require("crypto-js"),
-  Z = 18000,
-  a0 = 3,
-  a1 = 50,
-  a2 = ["\n", "@"],
-  a3 = "qmreadck",
-  a4 = console;
-let a5;
-const a6 = process.env[a3] || "";
-let a7 = process.env.qmgoldmode || 0,
-  a8 = process.env.qmwait || 0;
-try {
-  if (!a7) {
-    console.log("\n并发运行 等待间隔" + a8 + "秒");
-  }
-  if (a7) {
-    console.log("\n顺序运行 等待间隔" + a8 + "秒");
-  }
-} catch (ab) {}
-class a9 {
-  constructor(f) {
-    this.index = W.userIdx++;
-    a5 = W.h();
-    this.ck = f.split("#")[0];
-    this.params = f.split("#")[1];
-    this.rdtime = "AUTHORIZATION=" + this.ck + "app-version=7172020application-id=com.kmxs.readeris-white=0net-env=4platform=androidqm-params=" + this.params;
-    const l = {
-      limit: a0
+const _0x7c5542 = new Env("多多果园");
+var _0x5a970f = (_0x7c5542.isNode() ? process.env.ddgyck : _0x7c5542.getdata("ddgyck")) || "",
+  _0x9e2080 = "",
+  _0x3b94d5 = 0,
+  _0x4da9a1 = [],
+  _0x107268 = new Date(),
+  _0x23ef33 = _0x107268.getHours();
+class _0x3ec43f {
+  constructor(_0x1ae0b9) {
+    this.ck = _0x1ae0b9.split("#");
+    this.ckA = this.ck[0];
+    this.ckB = this.ck[1];
+    this.run = false;
+    this.index = ++_0x3b94d5;
+    this.msg = 1;
+    this.water = 0;
+    this.token = null;
+    this.uid = null;
+    this.nickName = "靓仔";
+    this.treeType = null;
+    this.fertilizerData = {
+      "large": {
+        "sum": 0,
+        "id": []
+      },
+      "small": {
+        "sum": 0,
+        "id": []
+      }
     };
-    this.got = X.extend({
-      headers: {
-        "net-env": "4",
-        "is-white": "0",
-        platform: "android",
-        "app-version": "7172020",
-        "application-id": "com.kmxs.reader",
-        AUTHORIZATION: this.ck,
-        "qm-params": this.params,
-        sign: this.sign(this.rdtime),
-        "no-permiss": "3",
-        "User-Agent": "webviewversion/0",
-        Connection: "Keep-Alive",
-        "Accept-Encoding": "gzip"
-      },
-      retry: l,
-      timeout: Z,
-      followRedirect: false
-    });
-    var f = a4;
-    f.log("@jk 七猫 书币");
+    this.boxStatus = 0;
+    this.luckyWaterStatus = 0;
   }
-  async Task() {
-    const e = {
-      RNVeO: function (k, l) {
-        return k * l;
+  async ["missionList"]() {
+    let _0x4abde5 = {
+        "url": "https://mobile.yangkeduo.com/proxy/api/api/manor/mission/list",
+        "body": "{\"mission_types\":[36287,36288,37113,37341,37349,36286,30071,36001,36002,37298],\"fun_pl\":2}",
+        "headers": {
+          "accesstoken": this.ckA,
+          "anti-token": this.ckB
+        }
       },
-      EkdCb: function (k, l) {
-        return k + l;
-      },
-      lRbUc: "1234567890",
-      rcCUJ: function (k, l) {
-        return k === l;
-      },
-      isdwI: "HVHzj",
-      IQAxv: "MfqWC",
-      tSokV: function (k, l) {
-        return k !== l;
-      },
-      dLdBE: "IzmrX",
-      NHrmS: function (k, l) {
-        return k == l;
-      },
-      ddNFo: function (k, l) {
-        return k >= l;
-      },
-      iEtHH: "看金币视频：全部完成",
-      gksGu: "UKAHq",
-      zUFOI: "NsCQY"
-    };
-    const f = e;
-    a5 += W.g();
-    if (a7) {
-      if (f.rcCUJ(f.isdwI, f.isdwI)) {
-        const k = {
-          time: true,
-          sp: true,
-          console: false
-        };
-        W.log("账号[" + W.padStr(this.index, W.userCount.toString().length) + "]", k);
-        this.x = "";
-      } else {
-        h += i.charAt(k.floor(f.RNVeO(l.random(), i.length)));
+      _0x2d4f24 = await _0x4185e1("post", _0x4abde5);
+    if (!_0x2d4f24) {
+      return;
+    }
+    if (_0x2d4f24.mission_list) {
+      let _0x114ba1 = _0x2d4f24.mission_list;
+      for (let _0xc23b13 in _0x114ba1) {
+        if (_0x114ba1[_0xc23b13].max_count - _0x114ba1[_0xc23b13].finished_count) {
+          console.log(_0x114ba1[_0xc23b13]);
+          await this.domission2(_0x114ba1[_0xc23b13].type);
+          await _0x7c5542.wait(1000);
+        }
       }
     } else {
-      this.x = "账号[" + W.padStr(this.index, W.userCount.toString().length) + "]";
-    }
-    var g = [17, 22, 24, 31, 32, 33, 39, 42, 43, 44, 45, 46, 47, 100, 101, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 120, 121, 122, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179],
-      h = [155, 156, 157, 158, 159, 160, 167, 172, 42, 43, 44, 46, 47, 121];
-    this.bk = 0;
-    this.px = 0;
-    for (const n of W.randomarr(99)) {
-      if (f.rcCUJ(f.IQAxv, f.IQAxv)) {
-        for (const o of [1, 2, 3, 4, 5, 6, 7, 10]) {
-          if (f.tSokV(f.dLdBE, f.dLdBE)) {
-            this.x = "账号[" + e.padStr(this.index, f.userCount.toString().length) + "]";
-          } else {
-            var i = await this.coinadd(o);
-            if (f.NHrmS(i, 1)) {
-              break;
-            }
-            await W.wait(a8);
-          }
-        }
-        if (f.ddNFo(this.px, 8)) {
-          a4.log(f.iEtHH);
-          break;
-        }
-      } else {
-        f = f.EkdCb(g, h);
-      }
-    }
-    for (const s of W.randomarr(99)) {
-      if (f.rcCUJ(f.gksGu, f.zUFOI)) {
-        return e.randomString(f, f.lRbUc);
-      } else {
-        var i = await this.coinadd2();
-        if (f.NHrmS(i, 1)) {
-          break;
-        }
-        await W.wait(a8);
-      }
+      _0x7c5542.log("获取任务列表失败");
     }
   }
-  async coinadd(c) {
-    try {
-      var f = W.ts(13),
-        g = W.randomString(9),
-        h = c,
-        i = "position_id=chapterendtype=" + h + "unique_request_id=" + g + f,
-        k = {
-          method: "post",
-          url: "https://api-ks.wtzw.com/api/v2/coin/add",
-          form: {
-            position_id: "chapterend",
-            type: h,
-            unique_request_id: "" + g + f,
-            sign: this.sign(i)
-          }
-        };
-      let {
-        result: m
-      } = await this.request(k);
-      if (m?.["data"]?.["coin"]) {
-        this.px = 0;
-        a4.log("看金币视频：" + m?.["data"]?.["coin"]);
+  async ["domission2"](_0x24e3b0, _0x1bfd72) {
+    let _0x5eb9a9 = {
+        "url": "https://mobile.yangkeduo.com/proxy/api/api/fun-gateway/command/mission/complete",
+        "body": "{\"mission_type\":\"" + _0x24e3b0 + "\",\"business_id\":3,\"biz_source\":\"SECKILL\"}",
+        "headers": {
+          "accesstoken": this.ckA,
+          "anti-token": this.ckB
+        }
+      },
+      _0x4fd209 = await _0x4185e1("post", _0x5eb9a9);
+    if (!_0x4fd209) {
+      return;
+    }
+    console.log(_0x4fd209);
+    await this.gain(_0x24e3b0, _0x1bfd72);
+  }
+  async ["domission"](_0x5b8973, _0x5ab514) {
+    let _0x2a4996 = {
+        "url": "https://mobile.yangkeduo.com/proxy/api/api/manor/mission/complete",
+        "body": "{\"mission_type\":" + _0x5b8973 + ",\"tubetoken\":\"" + this.token + "\",\"fun_pl\":2}",
+        "headers": {
+          "accesstoken": this.ckA,
+          "anti-token": this.ckB
+        }
+      },
+      _0xdb15cc = await _0x4185e1("post", _0x2a4996);
+    if (!_0xdb15cc) {
+      return;
+    }
+    _0x9e2080 = _0x5ab514 + "领取";
+    if (_0xdb15cc.result) {
+      let _0x323d6f = _0xdb15cc.reward_amount;
+      this.reward += _0x323d6f;
+      _0x7c5542.log(_0x9e2080 += ":获得" + _0x323d6f + "💧");
+    } else if (_0xdb15cc.server_time) {
+      _0x7c5542.log(_0x9e2080 += "失败：未知");
+    } else {
+      _0x7c5542.log(_0x9e2080 += "失败," + _0xdb15cc.error_msg);
+    }
+  }
+  async ["gain2"](_0x384ee5, _0x499045) {
+    let _0x6981dc = {
+        "url": "https://mobile.yangkeduo.com/proxy/api/api/manor/mission/complete/gain",
+        "body": "{\"mission_type\":" + _0x384ee5 + ",\"gain_time\":1,\"no_reward\":false,\"tubetoken\":\"" + this.token + "\",\"fun_pl\":2}",
+        "headers": {
+          "accesstoken": this.ckA,
+          "anti-token": this.ckB
+        }
+      },
+      _0x3eb942 = await _0x4185e1("post", _0x6981dc);
+    if (!_0x3eb942) {
+      return;
+    }
+    _0x9e2080 = _0x499045;
+    if (_0x3eb942.reward_list) {
+      let _0xf5cba6 = _0x3eb942.mission_list["" + _0x384ee5],
+        _0x3a6fa5 = _0xf5cba6.max_count - _0xf5cba6.finished_count;
+      let _0xd97535 = _0x3eb942.reward_list[0],
+        _0xb81ee2 = "" + (_0xd97535.reward_type == 1 ? "💧" : "化肥"),
+        _0x247725 = _0xd97535.reward_amount;
+      _0x7c5542.log(_0x9e2080 + (": 获得" + _0xb81ee2 + "*" + _0x247725 + ",今日还可领" + _0x3a6fa5 + "次"));
+    } else if (_0x3eb942.server_time) {
+      _0x7c5542.log(_0x9e2080 += "失败：未知");
+    } else {
+      _0x7c5542.log(_0x9e2080 += "失败：" + _0x3eb942.error_msg);
+    }
+  }
+  async ["gain"](_0xbb9e26, _0x58f881) {
+    let _0x1433ee = {
+        "url": "https://mobile.yangkeduo.com/proxy/api/api/manor/common/water/gain",
+        "body": "{ \"type\":" + _0xbb9e26 + ", \"mission_type\": null, \"params\":{\"15\":30000}, \"tubetoken\": \"" + this.token + "\", \"fun_pl\": 2 } ",
+        "headers": {
+          "accesstoken": this.ckA,
+          "anti-token": this.ckB
+        }
+      },
+      _0x1220c3 = await _0x4185e1("post", _0x1433ee);
+    if (!_0x1220c3) {
+      return;
+    }
+    _0x9e2080 = _0x58f881;
+    if (_0x1220c3.reward_list) {
+      let _0x251cb9 = _0x1220c3.reward_list[0].reward_amount;
+      _0x7c5542.log(_0x9e2080 + (":获得" + _0x251cb9 + "💧"));
+    } else if (_0x1220c3.reward_amount) {
+      let _0x28be14 = parseInt(_0x1220c3.reward_amount / 1000);
+      this.reward += _0x28be14;
+      _0x7c5542.log(_0x9e2080 += ":获得" + _0x28be14 + "💧");
+    } else if (_0x1220c3.status == 3) {
+      _0x7c5542.log(_0x9e2080 += "失败：已领取");
+    } else if (_0x1220c3.server_time) {
+      _0x7c5542.log(_0x9e2080 += "失败：未知");
+    } else {
+      _0x7c5542.log(_0x9e2080 += "失败：" + _0x1220c3.error_msg);
+    }
+  }
+  async ["openBox"](_0x3f21bd) {
+    let _0x1a8a39 = {
+        "url": "https://mobile.yangkeduo.com/proxy/api/api/manor/withered/open/box",
+        "body": "{ \"box_order\":" + _0x3f21bd + ", \"tubetoken\": \"" + this.token + "\", \"fun_pl\": 2 } ",
+        "headers": {
+          "accesstoken": this.ckA,
+          "anti-token": this.ckB
+        }
+      },
+      _0x4fcbe2 = await _0x4185e1("post", _0x1a8a39);
+    if (!_0x4fcbe2) {
+      return;
+    }
+    if (_0x4fcbe2.reward_list[0] || _0x4fcbe2.status == 1) {
+      _0x9e2080 = "宝箱开启成功，";
+      if (_0x4fcbe2.reward_list[0].reward_type == 1) {
+        _0x7c5542.log(_0x9e2080 += "获得水滴" + _0x4fcbe2.reward_list[0].reward_amount + " ");
       } else {
-        this.px += 1;
-        return m = 1;
+        _0x7c5542.log(_0x9e2080 += "奖励类型" + _0x4fcbe2.reward_list[0].reward_type + " ");
       }
-    } catch (p) {}
+    } else if (_0x4fcbe2.status == 3) {
+      _0x7c5542.log("此宝箱已开启");
+    } else {
+      _0x7c5542.log("宝箱开启失败");
+    }
   }
-  async coinadd2() {
-    try {
-      var g = W.ts(13),
-        h = W.randomString(9),
-        i = "extra_type=0id=4scene=1type=2unique_request_id=" + h + g,
-        k = {
-          method: "post",
-          url: "https://api-cfg.wtzw.com/v1/coin/add",
-          form: {
-            extra_type: "0",
-            id: "4",
-            scene: "1",
-            type: "2",
-            unique_request_id: "" + h + g,
-            sign: this.sign(i)
-          }
-        };
-      let {
-        result: l
-      } = await this.request(k);
-      if (l?.["data"]?.["coin"]) {
-        a4.log("看金币视频2：" + l?.["data"]?.["coin"]);
-      } else {
-        a4.log("看金币视频2完成");
-        return 1;
+  async ["gainWater"]() {
+    let _0x1b90d3 = {
+        "url": "https://mobile.yangkeduo.com/proxy/api/api/manor/gain/accumulate/water/reward",
+        "headers": {
+          "accesstoken": this.ckA,
+          "anti-token": this.ckB
+        }
+      },
+      _0x50d448 = await _0x4185e1("post", _0x1b90d3);
+    if (!_0x50d448) {
+      return;
+    }
+    _0x9e2080 = "蓄水瓶领取";
+    if (_0x50d448.accumulate_water_vo) {
+      let _0x5541ae = _0x50d448.accumulate_water_vo.reward_amount;
+      this.water += _0x5541ae;
+      _0x7c5542.log(_0x9e2080 += "成功：获得" + _0x5541ae + "水滴");
+    } else {
+      _0x7c5542.log(_0x9e2080 += "失败：" + _0x50d448.error_msg);
+    }
+  }
+  async ["treeConfig"]() {
+    let _0x3c3cac = {
+        "url": "https://mobile.yangkeduo.com/proxy/api/api/manor-query/medal/wall/info",
+        "headers": {
+          "accesstoken": this.ckA,
+          "anti-token": this.ckB
+        }
+      },
+      _0x5e9315 = await _0x4185e1("post", _0x3c3cac);
+    if (!_0x5e9315) {
+      return;
+    }
+    let _0x542373 = _0x5e9315.frontConfig[this.treeType].fruitName;
+    this.treeName = _0x542373;
+  }
+  async ["tree"]() {
+    let _0x5e93e4 = {
+        "url": "https://mobile.yangkeduo.com/proxy/api/api/manor/water/cost",
+        "headers": {
+          "accesstoken": this.ckA,
+          "anti-token": this.ckB
+        }
+      },
+      _0x4fb127 = await _0x4185e1("post", _0x5e93e4);
+    if (!_0x4fb127) {
+      return;
+    }
+    if (_0x4fb127.error_code) {
+      _0x7c5542.log("获取果树信息失败");
+    } else {
+      if (!_0x4fb127.tubetoken) {
+        _0x7c5542.log("获取tubetoken失败");
       }
-    } catch (p) {}
-  }
-  async read_index() {
-    const e = {};
-    e.DzjMP = function (k, l) {
-      return k + l;
-    };
-    e.QQmkK = function (k, l) {
-      return k / l;
-    };
-    e.QZCfa = function (k, l) {
-      return k - l;
-    };
-    e.aJfpN = function (k, l) {
-      return k + l;
-    };
-    e.ZAVzW = function (k, l) {
-      return k + l;
-    };
-    e.GnTCc = function (k, l) {
-      return k + l;
-    };
-    e.jDTPE = function (k, l) {
-      return k === l;
-    };
-    e.WoZzu = "BHxKp";
-    e.SJWeT = "xmdAs";
-    e.LaIXR = "GET";
-    e.dtpGw = function (k, l) {
-      return k !== l;
-    };
-    e.QwXIL = "FHvtq";
-    const f = e;
-    try {
-      if (f.jDTPE(f.WoZzu, f.SJWeT)) {
-        e = f.response;
-      } else {
-        var g = "book_privacy=1id=is_history=1read_preference=1tab_type=1",
-          h = {
-            method: f.LaIXR,
-            url: "https://api-bc.wtzw.com/api/v1/must-read?id=&tab_type=1&is_history=1&read_preference=1&book_privacy=1&sign=" + this.sign(g)
-          };
-        let {
-          result: l
-        } = await this.request(h);
-        if (l?.["data"]?.["books"]) {
-          if (f.dtpGw(f.QwXIL, f.QwXIL)) {
-            let n = v ? new w(i) : new y(),
-              o = {
-                "M+": f.DzjMP(n.getMonth(), 1),
-                "d+": n.getDate(),
-                "h+": n.getHours(),
-                "m+": n.getMinutes(),
-                "s+": n.getSeconds(),
-                "q+": z.floor(f.QQmkK(f.DzjMP(n.getMonth(), 3), 3)),
-                S: this.padStr(n.getMilliseconds(), 3)
-              };
-            /(y+)/.test(A) && (B = C.replace(D.$1, f.DzjMP(n.getFullYear(), "").substr(f.QZCfa(4, E.$1.length))));
-            for (let p in o) new N(f.aJfpN(f.ZAVzW("(", p), ")")).test(O) && (P = Q.replace(R.$1, 1 == S.$1.length ? o[p] : f.DzjMP("00", o[p]).substr(f.GnTCc("", o[p]).length)));
-            return L;
-          } else {
-            var i = W.randomList(l?.["data"]?.["books"]);
-            this.readid = i.id;
-            a4.log(this.x, "阅读 : 必读榜随机挑选一本书：《" + i?.["title"] + "》", i?.["author"], i?.["sub_title"]);
-          }
+      this.token = _0x4fb127.tubetoken;
+      let _0x42a29e = _0x4fb127.shake_dice_activity_icon_vo;
+      if (_0x42a29e && _0x42a29e.shake_dice_activity_vo) {
+        this.uid = _0x42a29e.shake_dice_activity_vo.user_shake_dice_vo.uid;
+      }
+      this.treeType = _0x4fb127.product.type;
+      this.water = _0x4fb127.now_water_amount;
+      let _0x29ac7d = _0x4fb127.product.progress_text,
+        _0x3ec7f0 = _0x29ac7d ? (100 - _0x29ac7d).toFixed(2) + "%" : "未结果";
+      _0x9e2080 = "水壶：" + this.water + "💧,进度：" + _0x3ec7f0;
+      _0x7c5542.log(this.msg ? _0x9e2080 : "浇水成功:" + _0x9e2080 + " ");
+      if (_0x4fb127.accumulate_water_vo) {
+        let _0x5f32de = _0x4fb127.accumulate_water_vo.activity_water_amount,
+          _0x41d78c = _0x4fb127.accumulate_water_vo.accumulate_reward_vo.origin_value,
+          _0x45898c = _0x4fb127.accumulate_water_vo.accumulate_reward_vo.end_value;
+        _0x9e2080 = "蓄水瓶：" + _0x5f32de + "💧";
+        if (_0x41d78c) {
+          _0x9e2080 += ", 满" + _0x41d78c + "可得" + _0x45898c + " ";
+        }
+        if (this.msg) {
+          _0x7c5542.log(_0x9e2080);
+        }
+      } else if (_0x23ef33 >= 7) {
+        await this.gainWater();
+      }
+      if (_0x4fb127.cost_water_competition) {
+        let _0x2709ef = _0x4fb127.cost_water_competition,
+          _0xb1a831 = _0x2709ef.current_rank,
+          _0x57d454 = _0x2709ef.manor_reward_list[0].reward_amount,
+          _0x492e01 = new Date(Number(_0x2709ef.end_timestamp + "000")),
+          _0x56c795 = _0x492e01.getDate(),
+          _0x273e10 = _0x492e01.getHours(),
+          _0x71fc72 = _0x56c795 - _0x107268.getDate(),
+          _0x5645e9 = _0x273e10 - _0x107268.getHours(),
+          _0x1205f8 = _0x71fc72 == 0 ? _0x5645e9 + "小时" : _0x71fc72 + "天";
+        if (this.msg) {
+          _0x7c5542.log("浇水竞赛：排名第" + _0xb1a831 + "，剩余" + _0x1205f8 + "结束, 可得" + _0x57d454 + "💧");
         }
       }
-    } catch (n) {}
-  }
-  async withalbum1_index() {
-    try {
-      var g = "book_privacy=1cache_ver=read_preference=0",
-        h = {
-          method: "GET",
-          url: "https://api-bc.wtzw.com/api/v1/album/index?read_preference=0&book_privacy=1&cache_ver=&sign=" + this.sign(g)
-        };
-      let {
-        result: k
-      } = await this.request(h);
-      if (k?.["data"]?.["sections"]) {
-        for (var i of k?.["data"]?.["sections"]) {
-          if (i?.["section_header"]?.["section_title"] == "猜你想听") {
-            i = W.randomList(i?.["books"]);
-            this.tbook = i.album_id;
-            a4.log(this.x, "听书 ：随机听一本书", "《" + i?.["title"] + "》", i?.["sub_title"]);
-          }
+      if (_0x4fb127.divide_water_competition_vo) {
+        let _0x538a86 = _0x4fb127.divide_water_competition_vo,
+          _0x28f93e = _0x538a86.reward_amount,
+          _0x3d134c = _0x538a86.pk_status;
+        if (this.msg) {
+          _0x7c5542.log("PK奖励:可得" + _0x28f93e + "💧，PK" + (_0x3d134c == 2 ? "结束" : "进行中") + " ");
+        }
+        if (_0x3d134c == 2) {
+          await this.gain(33, "PK奖励");
+          await _0x7c5542.wait(3000);
         }
       }
-    } catch (o) {}
-  }
-  async reward(g, h) {
-    try {
-      const m = {
-        install_app_list: ""
-      };
-      const n = {
-        params: m
-      };
-      const o = {
-        task_id: g,
-        type_prefix: h,
-        axiosConfig: n
-      };
-      var l = {
-        method: "POST",
-        url: "https://api-gw.wtzw.com/welf/h5/v1/task/reward?t=" + W.ts(13) + "&install_app_list=",
-        form: o
-      };
-      let {
-        result: p
-      } = await this.request(l);
-      if (p?.["reward"]) {
-        if (h == "task") {
-          a4.log(this.x, "听读金币奖励 ：", p?.["reward"]);
-        }
-        if (h == "video") {
-          a4.log(this.x, "听读金币视频奖励 ：", p?.["reward"]);
-        }
-      }
-    } catch (s) {}
-  }
-  async timing1(f, g, h) {
-    try {
-      var l = "bi=" + this.readid + "bt=0rrn=" + f + "st=" + g,
-        m = {
-          method: "POST",
-          url: "https://api-sc.wtzw.com/api/v4/timing-reward/report",
-          form: {
-            bi: this.readid,
-            bt: 0,
-            rrn: f,
-            st: g,
-            sign: this.sign(l)
-          }
-        };
-      let {
-        result: o
-      } = await this.request(m);
-      if (o?.["data"]?.["status"] == 1) {
-        this.bk = 0;
-        var g = o?.["data"]?.["tntrd"]["split"]("|");
-        h == 1 && a4.log(this.x, "阅读 ：当前阅读时间", (g[0] / 60).toFixed(1) + "分 ");
-        this.starttimex = o?.["data"]?.["st"];
-        h == 2 && a4.log(this.x, "阅读时长：[上传成功] 当前阅读时间: ", (g[0] / 60).toFixed(1) + "分 ", "下次可领取阅读奖励的时间: ", (g[1] / 60).toFixed(1) + "分 ");
-      } else {
-        if (o?.["data"]?.["status"] == 2) {
-          this.bk += 1;
-          var n = o?.["data"]?.["tntrd"]["split"]("|");
-          a4.log(this.x, "阅读 ：当前阅读时间", (n[0] / 60).toFixed(1) + "分 请领取阅读奖励");
-          for (const t of [172, 42, 43, 44, 46, 47, 121]) {
-            await this.reward(t, "task");
-            await this.reward(t, "video");
+      if (_0x4fb127.withered_back_box_list) {
+        let _0x52c9aa = "",
+          _0x47cc50 = 0;
+        for (let _0x3851d2 of _0x4fb127.withered_back_box_list) {
+          _0x52c9aa += "宝箱" + _0x3851d2.box_order + "," + (_0x3851d2.status == 3 ? "已" : "未") + " 开启\n";
+          if (!this.boxStatus && _0x3851d2.status != 3) {
+            this.boxStatus = 1;
+            _0x47cc50 = 1;
+            await this.openBox(_0x3851d2.box_order);
+            await _0x7c5542.wait(3000);
           }
         }
-      }
-    } catch (x) {}
-  }
-  async withalbum1(f, g, h) {
-    const i = {};
-    i.pSNbW = "POST";
-    i.SNutl = "https://api-sc.wtzw.com/api/v4/timing-reward/report-with-album";
-    i.QaBSZ = function (n, o) {
-      return n == o;
-    };
-    i.krxCN = "听书时长：[上传成功] 当前听书时间: ";
-    i.qLJcN = function (n, o) {
-      return n / o;
-    };
-    i.cAkVP = "下次可领取听书奖励的时间: ";
-    i.ggwjB = function (n, o) {
-      return n + o;
-    };
-    i.UhNdf = function (n, o) {
-      return n == o;
-    };
-    i.HFSRT = "听书 ：当前听书时间";
-    i.RXWUg = function (n, o) {
-      return n !== o;
-    };
-    i.shyTL = "zRPVD";
-    i.Qffbs = "FwLku";
-    i.DfDVT = function (n, o) {
-      return n / o;
-    };
-    i.Eslnx = "分 请领取听书奖励";
-    i.bdwGp = "EyRrW";
-    i.agsKw = "task";
-    i.qqMBI = "video";
-    const k = i;
-    try {
-      if (!g) {
-        g = "null";
-      }
-      var l = "ai=" + this.tbook + "bt=0rrn=" + f + "st=" + g,
-        m = {
-          method: k.pSNbW,
-          url: k.SNutl,
-          form: {
-            ai: this.tbook,
-            bt: 0,
-            rrn: f,
-            st: g,
-            sign: this.sign(l)
-          }
-        };
-      let {
-        result: n
-      } = await this.request(m);
-      if (k.QaBSZ(n?.["data"]?.["status"], 1)) {
-        this.bk = 0;
-        this.albumtime = n?.["data"]?.["st"];
-        var g = n?.["data"]?.["tntrd"]["split"]("|");
-        k.UhNdf(h, 1) && a4.log(this.x, k.HFSRT, k.qLJcN(g[0], 60).toFixed(1) + "分 ");
-        h == 2 && a4.log(this.x, k.krxCN, k.qLJcN(g[0], 60).toFixed(1) + "分", k.cAkVP, k.ggwjB(k.qLJcN(g[1], 60).toFixed(1), "分 "));
-      } else {
-        if (k.QaBSZ(n?.["data"]?.["status"], 2)) {
-          if (k.RXWUg(k.shyTL, k.Qffbs)) {
-            this.bk += 1;
-            var g = n?.["data"]?.["tntrd"]["split"]("|");
-            a4.log(this.x, k.HFSRT, k.DfDVT(g[0], 60).toFixed(1) + k.Eslnx);
-            for (const r of [155, 156, 157, 158, 159, 160, 167]) {
-              if (k.RXWUg(k.bdwGp, k.bdwGp)) {
-                this.log("\n未找到数据，请检查变量[" + l + "]");
-                return false;
-              } else {
-                await this.reward(r, k.agsKw);
-                await this.reward(r, k.qqMBI);
-              }
-            }
-          } else {
-            i = f;
-          }
+        if (this.msg) {
+          _0x7c5542.log(_0x47cc50 ? _0x52c9aa : "宝箱已全部开启");
         }
-      }
-    } catch (u) {}
-  }
-  async request(g) {
-    var k = null,
-      l = 0,
-      m = g.fn || g.url;
-    g.method = g?.["method"]?.["toUpperCase"]() || "GET";
-    while (l++ < a0) {
-      try {
-        await this.got(g).then(u => {
-          k = u;
-        }, u => {
-          k = u.response;
-        });
-        if ((k?.["statusCode"] / 100 | 0) <= 4) {
-          break;
-        }
-      } catch (v) {
-        "TimeoutError" == v.name ? this.qq("[" + m + "]请求超时，重试第" + l + "次") : this.qq("[" + m + "]请求错误(" + v.message + ")，重试第" + l + "次");
       }
     }
-    const n = {};
-    n.statusCode = -1;
-    n.headers = null;
-    n.result = null;
-    if (k == null) {
-      return Promise.resolve(n);
-    }
-    let {
-      statusCode: o,
-      headers: p,
-      body: r
-    } = k;
-    if (r) {
-      try {
-        r = JSON.parse(r);
-      } catch {}
-    }
-    const s = {};
-    s.statusCode = o;
-    s.headers = p;
-    s.result = r;
-    return Promise.resolve(s);
+    this.msg = 0;
   }
-  sign(d) {
-    d = d + "d3dGiJc651gSQ8w1";
-    return W.getmd5(d);
+  async ["my"]() {
+    let _0xd61605 = {
+        "url": "https://mobile.yangkeduo.com/proxy/api/api/manor-query/friend/list/page",
+        "headers": {
+          "accesstoken": this.ckA,
+          "anti-token": this.ckB
+        }
+      },
+      _0xd3c4c7 = await _0x4185e1("post", _0xd61605);
+    if (!_0xd3c4c7.error_code && _0xd3c4c7) {
+      this.run = true;
+      this.nickName = _0xd3c4c7.current_user_info.nickname;
+      _0x7c5542.log("你好, " + this.nickName + " ");
+    } else {
+      _0x7c5542.log("账号" + this.index + " 失效");
+    }
+  }
+  async ["f"]() {
+    let _0x1b68a8 = {
+        "url": "https://mobile.yangkeduo.com/proxy/api/api/manor-query/health/info?pdduid=7295622252&is_back=1",
+        "headers": {
+          "accesstoken": this.ckA,
+          "anti-token": this.ckB
+        }
+      },
+      _0x3c3248 = await _0x4185e1("post", _0x1b68a8);
+    if (!_0x3c3248) {
+      return;
+    }
+    if (_0x3c3248.backpack_goods_list) {
+      this.fertilizerData = _0x3c3248.backpack_goods_list;
+      let _0x4cdf43 = this.fertilizerData,
+        _0x31abef = 0,
+        _0x5a09e9 = 0;
+      for (let _0xccd548 in _0x4cdf43) {
+        if (_0x4cdf43[_0xccd548].type == 1) {
+          _0x31abef += _0x4cdf43[_0xccd548].available_amount;
+        } else if (_0x4cdf43[_0xccd548].type == 2) {
+          _0x5a09e9 += _0x4cdf43[_0xccd548].available_amount;
+        }
+      }
+      _0x7c5542.log("背包：大化肥" + _0x31abef + ",小化肥" + _0x5a09e9 + " ");
+      if (_0x31abef != 0 || _0x5a09e9 != 0) {
+        if (this.water > 500) {
+          _0x7c5542.log("剩余💧大于500，将优先使用大化肥");
+          _0x31abef >= 1 ? this.fertilizer(1, _0x31abef) : this.fertilizer(2, _0x5a09e9);
+        } else if (this.water > 200) {
+          _0x7c5542.log("剩余💧大于200，使用小化肥");
+          this.fertilizer(2, _0x5a09e9);
+        } else {
+          _0x7c5542.log("剩余💧小于200，化肥先留着吧");
+        }
+      }
+    } else {
+      _0x7c5542.log("获取化肥信息失败");
+    }
+  }
+  async ["fertilizer"](_0x5c93a1, _0x41b379) {
+    let _0xa42255 = {
+        "url": "https://mobile.yangkeduo.com/proxy/api/api/manor/use/backpack/goods",
+        "body": "{ \"type\":" + _0x5c93a1 + ", \"source\": 35, \"exchange_amount\":" + _0x41b379 + ", \"tubetoken\": \"" + this.token + "\", \"fun_pl\": 2 } ",
+        "headers": {
+          "accesstoken": this.ckA,
+          "anti-token": this.ckB
+        }
+      },
+      _0x4228ec = await _0x4185e1("post", _0xa42255);
+    if (!_0x4228ec) {
+      return;
+    }
+    let _0x534cee = _0x5c93a1 == 1 ? "大" : "小";
+    _0x9e2080 = "使用" + _0x534cee + " 化肥 * " + _0x41b379 + " ";
+    if (_0x4228ec.health_degree) {
+      _0x7c5542.log(_0x9e2080 += "成功, 当前养分：" + _0x4228ec.health_degree + " ");
+    } else {
+      _0x7c5542.log(_0x9e2080 += "失败：" + _0x4228ec.error_msg);
+    }
   }
 }
-!(async () => {
-  W.read_env(a9);
-  if (a7) {
-    for (const g of W.userList) await g.Task();
-  } else {
-    await W.threadTask("Task", a1);
-  }
-})().catch(c => W.log(c)).finally(() => W.exitNow());
-function aa(c) {
-  return new class {
-    constructor(e) {
-      this.name = e;
-      this.startTime = Date.now();
-      const k = {
-        time: true
-      };
-      this.log("开始运行", k);
-      this.notifyStr = [];
-      this.notifyFlag = true;
-      this.userIdx = 1;
-      this.userList = [];
-      this.userCount = 0;
-    }
-    h() {
-      return "d3d";
-    }
-    g() {
-      return "GiJ";
-    }
-    f() {
-      return "c651";
-    }
-    q() {
-      return "gSQ8w1";
-    }
-    log(e, f = {}) {
-      const g = {
-        console: true
-      };
-      Object.assign(g, f);
-      if (g.time) {
-        let i = g.fmt || "hh:mm:ss";
-        e = "[" + this.time(i) + "] " + e;
-      }
-      if (g.sp) {
-        console.log("\n-------------- " + e + " --------------");
-      }
-      if (g.notify) {
-        this.notifyStr.push(e);
-      }
-      if (g.console) {
-        console.log(e);
-      }
-    }
-    read_env(e) {
-      let g = a6,
-        h = a2.filter(k => g.includes(k)),
-        i = h.length > 0 ? h[0] : a2[0];
-      for (let k of g.split(i).filter(l => !!l)) {
-        this.userList.push(new e(k));
-      }
-      this.userCount = this.userList.length;
-      if (!this.userCount) {
-        this.log("\n未找到数据，请检查变量[" + a3 + "]");
-        return false;
-      }
-      this.log("共找到" + this.userCount + "个账号");
-      return true;
-    }
-    EncryptCrypto(e, f, g, h, i, k) {
-      return Y[e].encrypt(Y.enc.Utf8.parse(h), Y.enc.Utf8.parse(i), {
-        mode: Y.mode[f],
-        padding: Y.pad[g],
-        iv: Y.enc.Utf8.parse(k)
-      }).ciphertext.toString(Y.enc.Base64);
-    }
-    DecryptCrypto(e, f, g, h, i, k) {
-      return Y[e].decrypt({
-        ciphertext: Y.enc.Base64.parse(h)
-      }, Y.enc.Utf8.parse(i), {
-        mode: Y.mode[f],
-        padding: Y.pad[g],
-        iv: Y.enc.Utf8.parse(k)
-      }).toString(Y.enc.Utf8);
-    }
-    async threads(e, f, g = {}) {
-      while (f.idx < W.userList.length) {
-        let h = W.userList[f.idx++];
-        await h[e](g);
-      }
-    }
-    async threadTask(e, f) {
-      let g = [];
-      const h = {
-        idx: 0
-      };
-      while (f--) {
-        g.push(this.threads(e, h));
-      }
-      await Promise.all(g);
-    }
-    randomarr(f) {
-      return [...Array(f)].map((h, i) => i + 1);
-    }
-    time(f, g = null) {
-      let i = g ? new Date(g) : new Date(),
-        k = {
-          "M+": i.getMonth() + 1,
-          "d+": i.getDate(),
-          "h+": i.getHours(),
-          "m+": i.getMinutes(),
-          "s+": i.getSeconds(),
-          "q+": Math.floor((i.getMonth() + 3) / 3),
-          S: this.padStr(i.getMilliseconds(), 3)
-        };
-      /(y+)/.test(f) && (f = f.replace(RegExp.$1, (i.getFullYear() + "").substr(4 - RegExp.$1.length)));
-      for (let l in k) new RegExp("(" + l + ")").test(f) && (f = f.replace(RegExp.$1, 1 == RegExp.$1.length ? k[l] : ("00" + k[l]).substr(("" + k[l]).length)));
-      return f;
-    }
-    async showmsg() {
-      if (!this.notifyFlag) {
-        return;
-      }
-      if (!this.notifyStr.length) {
-        return;
-      }
-      var e = require("./sendNotify");
-      this.log("\n============== 推送 ==============");
-      await e.sendNotify(this.name, this.notifyStr.join("\n"));
-    }
-    padStr(e, f, g = {}) {
-      let l = g.padding || "0",
-        m = g.mode || "l",
-        n = String(e),
-        o = f > n.length ? f - n.length : 0,
-        p = "";
-      for (let r = 0; r < o; r++) {
-        p += l;
-      }
-      if (m == "r") {
-        n = n + p;
-      } else {
-        n = p + n;
-      }
-      return n;
-    }
-    json2str(e, f, g = false) {
-      let i = [];
-      for (let k of Object.keys(e).sort()) {
-        let m = e[k];
-        if (m && g) {
-          m = encodeURIComponent(m);
+(async () => {
+  if (await _0x102bc7()) {
+    for (let _0xd088f8 of _0x4da9a1) {
+      await _0xd088f8.my();
+      await _0x7c5542.wait(1000);
+      if (_0xd088f8.run) {
+        await _0xd088f8.tree();
+        await _0x7c5542.wait(2000);
+        await _0xd088f8.gain(15, "水滴收集器");
+        await _0x7c5542.wait(2000);
+        if (_0x23ef33 >= 7 && _0x23ef33 <= 9) {
+          await _0xd088f8.gain2(36069, "打卡领化肥");
+          await _0x7c5542.wait(2000);
+          await _0xd088f8.gain2(36155, "打卡领水滴");
+          await _0x7c5542.wait(2000);
+          await _0xd088f8.domission(37265, "早餐福袋");
+          await _0x7c5542.wait(3000);
+          await _0xd088f8.gain2(37210, "每日领化肥");
+          await _0x7c5542.wait(3000);
+        } else if (_0x23ef33 >= 12 && _0x23ef33 <= 14) {
+          await _0xd088f8.domission(37265, "午餐福袋");
+          await _0x7c5542.wait(3000);
+          await _0xd088f8.gain2(36069, "打卡领化肥");
+          await _0x7c5542.wait(2000);
+          await _0xd088f8.gain2(37210, "每日领化肥");
+          await _0x7c5542.wait(3000);
+        } else if (_0x23ef33 >= 18 && _0x23ef33 <= 21) {
+          await _0xd088f8.domission(37265, "晚餐福袋");
+          await _0x7c5542.wait(3000);
+          await _0xd088f8.gain2(37210, "每日领化肥");
+          await _0x7c5542.wait(3000);
         }
-        i.push(k + "=" + m);
-      }
-      return i.join(f);
-    }
-    getmd5(e, f = 0) {
-      return f >= 1 ? Y.MD5(e).toString().toUpperCase() : Y.MD5(e).toString();
-    }
-    enbase64(e) {
-      var f = Y.enc.Utf8.parse(e),
-        g = Y.enc.Base64.stringify(f);
-      return g;
-    }
-    debase64(e) {
-      var g = Y.enc.Base64.parse(e),
-        h = g.toString(Y.enc.Utf8);
-      return h;
-    }
-    str2json(e, f = false) {
-      let g = {};
-      for (let h of e.split("&")) {
-        if (!h) {
-          continue;
-        }
-        let i = h.indexOf("=");
-        if (i == -1) {
-          continue;
-        }
-        let l = h.substr(0, i),
-          m = h.substr(i + 1);
-        if (f) {
-          m = decodeURIComponent(m);
-        }
-        g[l] = m;
-      }
-      return g;
-    }
-    randomPattern(e, f = "abcdef0123456789") {
-      let g = "";
-      for (let h of e) {
-        if (h == "x") {
-          g += f.charAt(Math.floor(Math.random() * f.length));
+        if (_0xd088f8.water > 100) {
+          _0x7c5542.log("准备浇水");
+          await _0xd088f8.f();
+          await _0x7c5542.wait(1000);
+          for (let _0x595ac0 = 10; _0x595ac0 < _0xd088f8.water - 100; _0x595ac0++) {
+            await _0xd088f8.tree();
+          }
         } else {
-          if (h == "X") {
-            g += f.charAt(Math.floor(Math.random() * f.length)).toUpperCase();
-          } else {
-            g += h;
+          _0x7c5542.log("小于100💧，保留用于明天");
+        }
+      }
+    }
+  }
+})().catch(_0x4eebc2 => _0x7c5542.logErr(_0x4eebc2)).finally(() => _0x7c5542.done());
+async function _0x102bc7() {
+  if (!_0x5a970f) {
+    _0x7c5542.log("找不到CK");
+    return false;
+  } else {
+    let _0xadf51c;
+    if (_0x5a970f.indexOf("@") != -1) {
+      _0xadf51c = _0x5a970f.split("@");
+    } else {
+      _0xadf51c = _0x5a970f.split("\n");
+    }
+    for (let _0x24dc92 in _0xadf51c) {
+      _0x4da9a1.push(new _0x3ec43f(_0xadf51c[_0x24dc92]));
+    }
+    _0x7c5542.log("共找到" + _0xadf51c.length + " 个CK");
+    return true;
+  }
+}
+var _0xe01d3d = require("request");
+async function _0x4185e1(_0x1c4a15, _0xb9c0c2) {
+  await _0x7c5542.wait(500);
+  return new Promise(_0x41828b => {
+    _0xe01d3d[_0x1c4a15](_0xb9c0c2, async (_0x57fbb5, _0x336696, _0x38f17d) => {
+      try {
+        if (_0x57fbb5) {
+          _0x7c5542.log("请求失败");
+          _0x41828b();
+        } else {
+          _0x41828b(JSON.parse(_0x38f17d));
+        }
+      } catch (_0x5acc93) {
+        _0x7c5542.logErr(_0x5acc93);
+      } finally {
+        _0x41828b();
+      }
+    });
+  });
+}
+_0xodJ = "jsjiami.com.v6";
+function Env(t, e) {
+  class s {
+    constructor(t) {
+      this.env = t;
+    }
+    send(t, e = "GET") {
+      t = "string" == typeof t ? {
+        url: t
+      } : t;
+      let s = this.get;
+      return "POST" === e && (s = this.post), new Promise((e, i) => {
+        s.call(this, t, (t, s, r) => {
+          t ? i(t) : e(s);
+        });
+      });
+    }
+    get(t) {
+      return this.send.call(this.env, t);
+    }
+    post(t) {
+      return this.send.call(this.env, t, "POST");
+    }
+  }
+  return new class {
+    constructor(t, e) {
+      this.name = t;
+      this.http = new s(this);
+      this.data = null;
+      this.dataFile = "box.dat";
+      this.logs = [];
+      this.isMute = !1;
+      this.isNeedRewrite = !1;
+      this.logSeparator = "\n";
+      this.encoding = "utf-8";
+      this.startTime = new Date().getTime();
+      Object.assign(this, e);
+      this.log("", `\ud83d\udd14${this.name}, \u5f00\u59cb!`);
+    }
+    isNode() {
+      return "undefined" != typeof module && !!module.exports;
+    }
+    isQuanX() {
+      return "undefined" != typeof $task;
+    }
+    isSurge() {
+      return "undefined" != typeof $httpClient && "undefined" == typeof $loon;
+    }
+    isLoon() {
+      return "undefined" != typeof $loon;
+    }
+    isShadowrocket() {
+      return "undefined" != typeof $rocket;
+    }
+    toObj(t, e = null) {
+      try {
+        return JSON.parse(t);
+      } catch {
+        return e;
+      }
+    }
+    toStr(t, e = null) {
+      try {
+        return JSON.stringify(t);
+      } catch {
+        return e;
+      }
+    }
+    getjson(t, e) {
+      let s = e;
+      const i = this.getdata(t);
+      if (i) try {
+        s = JSON.parse(this.getdata(t));
+      } catch {}
+      return s;
+    }
+    setjson(t, e) {
+      try {
+        return this.setdata(JSON.stringify(t), e);
+      } catch {
+        return !1;
+      }
+    }
+    getScript(t) {
+      return new Promise(e => {
+        this.get({
+          url: t
+        }, (t, s, i) => e(i));
+      });
+    }
+    runScript(t, e) {
+      return new Promise(s => {
+        let i = this.getdata("@chavy_boxjs_userCfgs.httpapi");
+        i = i ? i.replace(/\n/g, "").trim() : i;
+        let r = this.getdata("@chavy_boxjs_userCfgs.httpapi_timeout");
+        r = r ? 1 * r : 20;
+        r = e && e.timeout ? e.timeout : r;
+        const [o, h] = i.split("@"),
+          n = {
+            url: `http://${h}/v1/scripting/evaluate`,
+            body: {
+              script_text: t,
+              mock_type: "cron",
+              timeout: r
+            },
+            headers: {
+              "X-Key": o,
+              Accept: "*/*"
+            }
+          };
+        this.post(n, (t, e, i) => s(i));
+      }).catch(t => this.logErr(t));
+    }
+    loaddata() {
+      if (!this.isNode()) return {};
+      {
+        this.fs = this.fs ? this.fs : require("fs");
+        this.path = this.path ? this.path : require("path");
+        const t = this.path.resolve(this.dataFile),
+          e = this.path.resolve(process.cwd(), this.dataFile),
+          s = this.fs.existsSync(t),
+          i = !s && this.fs.existsSync(e);
+        if (!s && !i) return {};
+        {
+          const i = s ? t : e;
+          try {
+            return JSON.parse(this.fs.readFileSync(i));
+          } catch (t) {
+            return {};
           }
         }
       }
-      return g;
     }
-    randomString(e, f = "abcdefghijk0123456789") {
-      let g = "";
-      for (let h = 0; h < e; h++) {
-        g += f.charAt(Math.floor(Math.random() * f.length));
-      }
-      return g;
-    }
-    ts(e) {
-      if (e == 10) {
-        let f = Math.round(new Date().getTime() / 1000).toString();
-        return f;
-      } else {
-        let g = new Date().getTime();
-        return g;
+    writedata() {
+      if (this.isNode()) {
+        this.fs = this.fs ? this.fs : require("fs");
+        this.path = this.path ? this.path : require("path");
+        const t = this.path.resolve(this.dataFile),
+          e = this.path.resolve(process.cwd(), this.dataFile),
+          s = this.fs.existsSync(t),
+          i = !s && this.fs.existsSync(e),
+          r = JSON.stringify(this.data);
+        s ? this.fs.writeFileSync(t, r) : i ? this.fs.writeFileSync(e, r) : this.fs.writeFileSync(t, r);
       }
     }
-    randomNum(f) {
-      return W.randomString(f, "1234567890");
+    lodash_get(t, e, s) {
+      const i = e.replace(/\[(\d+)\]/g, ".$1").split(".");
+      let r = t;
+      for (const t of i) if (r = Object(r)[t], void 0 === r) return s;
+      return r;
     }
-    randomList(e) {
-      let f = Math.floor(Math.random() * e.length);
-      return e[f];
+    lodash_set(t, e, s) {
+      return Object(t) !== t ? t : (Array.isArray(e) || (e = e.toString().match(/[^.[\]]+/g) || []), e.slice(0, -1).reduce((t, s, i) => Object(t[s]) === t[s] ? t[s] : t[s] = Math.abs(e[i + 1]) >> 0 == +e[i + 1] ? [] : {}, t)[e[e.length - 1]] = s, t);
     }
-    wait(e) {
-      return new Promise(f => setTimeout(f, e * 1000));
+    getdata(t) {
+      let e = this.getval(t);
+      if (/^@/.test(t)) {
+        const [, s, i] = /^@(.*?)\.(.*?)$/.exec(t),
+          r = s ? this.getval(s) : "";
+        if (r) try {
+          const t = JSON.parse(r);
+          e = t ? this.lodash_get(t, i, "") : e;
+        } catch (t) {
+          e = "";
+        }
+      }
+      return e;
     }
-    async exitNow() {
-      this.log("");
-      const e = {
-        time: true
+    setdata(t, e) {
+      let s = false;
+      if (/^@/.test(e)) {
+        const [, i, r] = /^@(.*?)\.(.*?)$/.exec(e),
+          o = this.getval(i),
+          h = i ? "null" === o ? null : o || "{}" : "{}";
+        try {
+          const e = JSON.parse(h);
+          this.lodash_set(e, r, t);
+          s = this.setval(JSON.stringify(e), i);
+        } catch (e) {
+          const o = {};
+          this.lodash_set(o, r, t);
+          s = this.setval(JSON.stringify(o), i);
+        }
+      } else s = this.setval(t, e);
+      return s;
+    }
+    getval(t) {
+      return this.isSurge() || this.isLoon() ? $persistentStore.read(t) : this.isQuanX() ? $prefs.valueForKey(t) : this.isNode() ? (this.data = this.loaddata(), this.data[t]) : this.data && this.data[t] || null;
+    }
+    setval(t, e) {
+      return this.isSurge() || this.isLoon() ? $persistentStore.write(t, e) : this.isQuanX() ? $prefs.setValueForKey(t, e) : this.isNode() ? (this.data = this.loaddata(), this.data[e] = t, this.writedata(), !0) : this.data && this.data[e] || null;
+    }
+    initGotEnv(t) {
+      this.got = this.got ? this.got : require("got");
+      this.cktough = this.cktough ? this.cktough : require("tough-cookie");
+      this.ckjar = this.ckjar ? this.ckjar : new this.cktough.CookieJar();
+      t && (t.headers = t.headers ? t.headers : {}, void 0 === t.headers.Cookie && void 0 === t.cookieJar && (t.cookieJar = this.ckjar));
+    }
+    get(t, e = () => {}) {
+      if (t.headers && (delete t.headers["Content-Type"], delete t.headers["Content-Length"]), this.isSurge() || this.isLoon()) {
+        this.isSurge() && this.isNeedRewrite && (t.headers = t.headers || {}, Object.assign(t.headers, {
+          "X-Surge-Skip-Scripting": !1
+        }));
+        $httpClient.get(t, (t, s, i) => {
+          !t && s && (s.body = i, s.statusCode = s.status);
+          e(t, s, i);
+        });
+      } else if (this.isQuanX()) {
+        this.isNeedRewrite && (t.opts = t.opts || {}, Object.assign(t.opts, {
+          hints: !1
+        }));
+        $task.fetch(t).then(t => {
+          const {
+            statusCode: s,
+            statusCode: i,
+            headers: r,
+            body: o
+          } = t;
+          e(null, {
+            status: s,
+            statusCode: i,
+            headers: r,
+            body: o
+          }, o);
+        }, t => e(t));
+      } else if (this.isNode()) {
+        let s = require("iconv-lite");
+        this.initGotEnv(t);
+        this.got(t).on("redirect", (t, e) => {
+          try {
+            if (t.headers["set-cookie"]) {
+              const s = t.headers["set-cookie"].map(this.cktough.Cookie.parse).toString();
+              s && this.ckjar.setCookieSync(s, null);
+              e.cookieJar = this.ckjar;
+            }
+          } catch (t) {
+            this.logErr(t);
+          }
+        }).then(t => {
+          const {
+            statusCode: i,
+            statusCode: r,
+            headers: o,
+            rawBody: h
+          } = t;
+          e(null, {
+            status: i,
+            statusCode: r,
+            headers: o,
+            rawBody: h
+          }, s.decode(h, this.encoding));
+        }, t => {
+          const {
+            message: i,
+            response: r
+          } = t;
+          e(i, r, r && s.decode(r.rawBody, this.encoding));
+        });
+      }
+    }
+    post(t, e = () => {}) {
+      const s = t.method ? t.method.toLocaleLowerCase() : "post";
+      if (t.body && t.headers && !t.headers["Content-Type"] && (t.headers["Content-Type"] = "application/x-www-form-urlencoded"), t.headers && delete t.headers["Content-Length"], this.isSurge() || this.isLoon()) {
+        this.isSurge() && this.isNeedRewrite && (t.headers = t.headers || {}, Object.assign(t.headers, {
+          "X-Surge-Skip-Scripting": !1
+        }));
+        $httpClient[s](t, (t, s, i) => {
+          !t && s && (s.body = i, s.statusCode = s.status);
+          e(t, s, i);
+        });
+      } else if (this.isQuanX()) {
+        t.method = s;
+        this.isNeedRewrite && (t.opts = t.opts || {}, Object.assign(t.opts, {
+          hints: !1
+        }));
+        $task.fetch(t).then(t => {
+          const {
+            statusCode: s,
+            statusCode: i,
+            headers: r,
+            body: o
+          } = t;
+          e(null, {
+            status: s,
+            statusCode: i,
+            headers: r,
+            body: o
+          }, o);
+        }, t => e(t));
+      } else if (this.isNode()) {
+        let i = require("iconv-lite");
+        this.initGotEnv(t);
+        const {
+          url: r,
+          ...o
+        } = t;
+        this.got[s](r, o).then(t => {
+          const {
+            statusCode: s,
+            statusCode: r,
+            headers: o,
+            rawBody: h
+          } = t;
+          e(null, {
+            status: s,
+            statusCode: r,
+            headers: o,
+            rawBody: h
+          }, i.decode(h, this.encoding));
+        }, t => {
+          const {
+            message: s,
+            response: r
+          } = t;
+          e(s, r, r && i.decode(r.rawBody, this.encoding));
+        });
+      }
+    }
+    time(t, e = null) {
+      const s = e ? new Date(e) : new Date();
+      let i = {
+        "M+": s.getMonth() + 1,
+        "d+": s.getDate(),
+        "H+": s.getHours(),
+        "m+": s.getMinutes(),
+        "s+": s.getSeconds(),
+        "q+": Math.floor((s.getMonth() + 3) / 3),
+        S: s.getMilliseconds()
       };
-      this.log("运行结束，共运行了" + (Date.now() - this.startTime) / 1000 + "秒", e);
-      process.exit(0);
+      /(y+)/.test(t) && (t = t.replace(RegExp.$1, (s.getFullYear() + "").substr(4 - RegExp.$1.length)));
+      for (let e in i) new RegExp("(" + e + ")").test(t) && (t = t.replace(RegExp.$1, 1 == RegExp.$1.length ? i[e] : ("00" + i[e]).substr(("" + i[e]).length)));
+      return t;
     }
-  }(c);
+    msg(e = t, s = "", i = "", r) {
+      const o = t => {
+        if (!t) return t;
+        if ("string" == typeof t) return this.isLoon() ? t : this.isQuanX() ? {
+          "open-url": t
+        } : this.isSurge() ? {
+          url: t
+        } : void 0;
+        if ("object" == typeof t) {
+          if (this.isLoon()) {
+            let e = t.openUrl || t.url || t["open-url"],
+              s = t.mediaUrl || t["media-url"];
+            return {
+              openUrl: e,
+              mediaUrl: s
+            };
+          }
+          if (this.isQuanX()) {
+            let e = t["open-url"] || t.url || t.openUrl,
+              s = t["media-url"] || t.mediaUrl;
+            return {
+              "open-url": e,
+              "media-url": s
+            };
+          }
+          if (this.isSurge()) {
+            let e = t.url || t.openUrl || t["open-url"];
+            return {
+              url: e
+            };
+          }
+        }
+      };
+      if (this.isMute || (this.isSurge() || this.isLoon() ? $notification.post(e, s, i, o(r)) : this.isQuanX() && $notify(e, s, i, o(r))), !this.isMuteLog) {
+        let t = ["", "==============📣系统通知📣=============="];
+        t.push(e);
+        s && t.push(s);
+        i && t.push(i);
+        console.log(t.join("\n"));
+        this.logs = this.logs.concat(t);
+      }
+    }
+    log(...t) {
+      t.length > 0 && (this.logs = [...this.logs, ...t]);
+      console.log(t.join(this.logSeparator));
+    }
+    logErr(t, e) {
+      const s = !this.isSurge() && !this.isQuanX() && !this.isLoon();
+      s ? this.log("", `\u2757\ufe0f${this.name}, \u9519\u8bef!`, t.stack) : this.log("", `\u2757\ufe0f${this.name}, \u9519\u8bef!`, t);
+    }
+    wait(t) {
+      return new Promise(e => setTimeout(e, t));
+    }
+    done(t = {}) {
+      const e = new Date().getTime(),
+        s = (e - this.startTime) / 1000;
+      this.log("", `\ud83d\udd14${this.name}, \u7ed3\u675f! \ud83d\udd5b ${s} \u79d2`);
+      this.log();
+      (this.isSurge() || this.isQuanX() || this.isLoon()) && $done(t);
+    }
+  }(t, e);
 }
